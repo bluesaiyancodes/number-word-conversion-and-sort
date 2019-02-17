@@ -1,0 +1,162 @@
+from merge import mergesort
+
+
+class Main:
+    arrint = []
+    arrStr = []
+    max
+
+    def __init__(self):
+        max = input("Enter the number of elements to enter: ")
+        for i in range(0, max):
+            str1 = str(i) + ": "
+            inputint = input(str1)
+            while inputint <= 0:
+                print("\nEnter valid Input")
+                inputint = input(str1)
+            self.arrint.append(inputint)
+
+    def display(self):
+        for i in range(0, len(self.arrStr)):
+            print(self.arrStr[i])
+       # print(self.arrStr[0][1])
+
+    def toString(self):
+        for i in range(0, len(self.arrint)):
+            if 0 <= self.arrint[i] < 10:
+                val = self.ones(self.arrint[i])
+            elif 10 <= self.arrint[i] < 100:
+                val = self.twos(self.arrint[i])
+            elif 100 <= self.arrint[i] < 1000:
+                val = self.hundred(self.arrint[i])
+            elif 1000 <= self.arrint[i] < 100000:
+                val = self.thousand(self.arrint[i])
+            elif 100000 <= self.arrint[i] < 10000000:
+                val = self.lakh(self.arrint[i])
+            elif 10000000 <= self.arrint[i]:
+                val = self.crore(self.arrint[i])
+            self.arrStr.append(val)
+
+    def ones(self, i):
+        if i is 1:
+            return("one")
+        elif i is 2:
+            return ("two")
+        elif i is 3:
+            return ("three")
+        elif i is 4:
+            return ("four")
+        elif i is 5:
+            return ("five")
+        elif i is 6:
+            return ("six")
+        elif i is 7:
+            return ("seven")
+        elif i is 8:
+            return ("eight")
+        elif i is 9:
+            return("nine")
+
+
+    def twos(self, i):
+        if i < 10:
+            return self.ones(i)
+        elif i is 10:
+            return ("ten")
+        elif i is 11:
+            return ("eleven")
+        elif i is 12:
+            return ("twelve")
+        elif i is 13:
+            return ("thirteen")
+        elif i is 14:
+            return ("fourteen")
+        elif i is 15:
+            return ("fifteen")
+        elif i is 16:
+            return ("sixteen")
+        elif i is 17:
+            return ("seventeen")
+        elif i is 18:
+            return ("eighteen")
+        elif i is 19:
+            return ("nineteen")
+
+        if 20 <= i < 30:
+            rem = i % 20
+            tempstr = "twenty " + str(self.ones(rem))
+            return tempstr
+        elif 30 <= i < 40:
+            rem = i % 30
+            tempstr = "thirty " + str(self.ones(rem))
+            return tempstr
+        elif 40 <= i < 50:
+            rem = i % 40
+            tempstr = "fourty " + str(self.ones(rem))
+            return tempstr
+        elif 50 <= i < 60:
+            rem = i % 50
+            tempstr = "fifty " + str(self.ones(rem))
+            return tempstr
+        elif 60 <= i < 70:
+            rem = i % 60
+            tempstr = "sixty " + str(self.ones(rem))
+            return tempstr
+        elif 70 <= i < 80:
+            rem = i % 70
+            tempstr = "seventy " + str(self.ones(rem))
+            return tempstr
+        elif 80 <= i < 90:
+            rem = i % 80
+            tempstr = "eighty " + str(self.ones(rem))
+            return tempstr
+        elif 90 <= i < 100:
+            rem = i % 90
+            tempstr = "ninety " + str(self.ones(rem))
+            return tempstr
+
+    def hundred(self, i):
+        hundredplace = i // 100
+        val = str(self.ones(hundredplace)) + " hundred "
+        i = i - hundredplace * 100
+        val = str(val) + str(self.twos(i))
+        return val
+
+    def thousand(self, i):
+        thousandplace = i // 1000
+        val = str(self.twos(thousandplace)) + " thousand "
+        i = i - thousandplace*1000
+        val = str(val) + str(self.hundred(i))
+        return val
+
+    def lakh(self, i):
+        lakhplace = i // 100000
+        if lakhplace > 1:
+            val = str(self.twos(lakhplace)) + " lakhs "
+        else:
+            val = str(self.twos(lakhplace)) + " lakh "
+        i = i - lakhplace * 100000
+        val = str(val) + str(self.thousand(i))
+        return val
+
+    def crore(self, i):
+        croreplace = i // 10000000
+        if croreplace < 2:
+            val = str(self.twos(croreplace)) + " crore "
+        elif 2 <= croreplace < 100:
+            val = str(self.twos(croreplace)) + " crores "
+        else:
+            val = str(self.hundred(croreplace)) + " crores "
+        i = i - croreplace * 10000000
+        val = str(val) + str(self.lakh(i))
+        return val
+
+    #Sorting Starts here
+
+
+
+mainfun = Main()
+mainfun.toString()
+mainfun.display()
+print("Sorted Strings : ")
+print(mergesort(mainfun.arrStr))
