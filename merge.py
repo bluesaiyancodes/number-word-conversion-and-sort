@@ -1,4 +1,5 @@
 def merge(a, b):
+    #comment added by jeevan jyoti sahoo
     """ Function to merge two arrays """
     c = []
     while len(a) != 0 and len(b) != 0:
