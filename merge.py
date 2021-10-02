@@ -22,7 +22,6 @@ def merge(a, b):
 
 def mergesort(x):
     """ Function to sort an array using merge sort algorithm """
-    print("program started")
     if len(x) == 0 or len(x) == 1:
         return x
     else:
