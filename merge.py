@@ -30,4 +30,4 @@ def mergesort(x):
         a = mergesort(x[:middle])
         b = mergesort(x[middle:])
         return merge(a, b)
-
+    print("program executed successfully")
