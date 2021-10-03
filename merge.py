@@ -16,6 +16,7 @@ def merge(a, b):
         c += b
     else:
         c += a
+    print("merging completed")
     return c
 
 # Code for merge sort
@@ -31,4 +32,3 @@ def mergesort(x):
         b = mergesort(x[middle:])
         return merge(a, b)
 
-print("Merged everything")
