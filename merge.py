@@ -32,4 +32,3 @@ def mergesort(x):
         b = mergesort(x[middle:])
         return merge(a, b)
 
-
