@@ -20,7 +20,14 @@ def merge(a, b):
     return c
 
 # Code for merge sort
-
+#code for cleaning the image
+def cleanImage(self, image):
+        for i in range(image.shape[0]):
+            for j in range(image.shape[1]):
+                pixel = image[i][j]
+                if sum(pixel)<=55:
+                    image[i][j] = [0, 0, 0]
+        return image
 
 def mergesort(x):
     """ Function to sort an array using merge sort algorithm """
